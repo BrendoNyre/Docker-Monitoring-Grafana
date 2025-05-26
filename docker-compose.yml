@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  zabbix-agent2:
+    image: zabbix/zabbix-agent2:alpine-6.4-latest
+    container_name: zabbix-agent2-docker
+    user: root
+    restart: always
+    network_mode: host
+    environment:
+      ZBX_SERVER_HOST: 192.168.10.21 #defina o IP do servidor zabbix-server aqui
+      ZBX_HOSTNAME: server_dockerz  #aqui voce pode definir o nome para o seu zabbix agent, escrever da mesma forma quando for cadastrar o host no zabbix-server
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
